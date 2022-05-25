@@ -21,7 +21,7 @@ runs:
       shell: bash
       # We compress before uploading in order to minimize the impact on github storage costs
       # and to reduce the upload time
-      run: cd ${{ inputs.dir }} && zip -r9 ../basename ${{inputs.dir }}.zip . && cd -
+      run: cd ${{ inputs.dir }} && zip -r9 ../$(basename ${{ inputs.dir }}).zip . && cd -
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v2
