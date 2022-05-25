@@ -38,8 +38,8 @@ runs:
         exit 1
     - name: Upload sourcemaps
       env:
-        DATADOG_SITE: ${{ env.DATADOG_SITE || "datadoghq.eu" }}
-        DATADOG_API_HOST: ${{ env.DATADOG_API_HOST || "api.datadoghq.eu" }}
+        DATADOG_SITE: ${{ env.DATADOG_SITE }} || 'datadoghq.eu'
+        DATADOG_API_HOST: ${{ env.DATADOG_API_HOST }} || 'api.datadoghq.eu'
       shell: bash
       run: |
         npx @datadog/datadog-ci sourcemaps upload ${{ inputs.path }} \
