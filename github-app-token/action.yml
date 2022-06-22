@@ -1,0 +1,23 @@
+name: Generate Github token via playtomic-bot
+
+inputs:
+  private-key:
+    type: string
+    required: true
+    description: |
+      available via Github organization settings as secrets.PLAYTOMIC_BOT_APP_PRIVATE_KEY
+
+outputs:
+  token:
+    value: ${{ steps.generate-token.outputs.token }}
+    description: Token to be used for further workflow steps
+
+runs:
+  using: composite
+  steps:
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: 213420
+          private_key: ${{ secrets.private-key }}
