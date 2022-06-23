@@ -20,4 +20,4 @@ runs:
         uses: tibdex/github-app-token@v1
         with:
           app_id: 213420
-          private_key: ${{ secrets.private-key }}
+          private_key: ${{ inputs.private-key }}
