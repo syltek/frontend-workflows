@@ -18,7 +18,7 @@ jobs:
         uses: syltek/frontend-workflows/github-app-token@v1
         with:
           # This secret is available to any private repository under the organization
-          private_key: ${{ secrets.PLAYTOMIC_BOT_APP_PRIVATE_KEY }}
+          private-key: ${{ secrets.PLAYTOMIC_BOT_APP_PRIVATE_KEY }}
       - name: Use token
         env:
           TOKEN: ${{ steps.generate_token.outputs.token }}
