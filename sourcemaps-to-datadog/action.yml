@@ -36,10 +36,19 @@ runs:
       run: |
         echo env variable DATADOG_API_KEY must be defined
         exit 1
+    - name: Set environment variables
+      shell: bash
+      run: |
+        if [[ ${{ env.DATADOG_SITE }} == '' ]]; then
+          echo "DATADOG_SITE=datadoghq.eu" >> $GITHUB_ENV
+        fi
+        if [[ ${{ env.DATADOG_API_HOST }} == '' ]]; then
+          echo "DATADOG_API_HOST=api.datadoghq.eu" >> $GITHUB_ENV
+        fi
     - name: Upload sourcemaps
       env:
-        DATADOG_SITE: ${{ env.DATADOG_SITE }} || 'datadoghq.eu'
-        DATADOG_API_HOST: ${{ env.DATADOG_API_HOST }} || 'api.datadoghq.eu'
+        DATADOG_SITE: ${{ env.DATADOG_SITE }}
+        DATADOG_API_HOST: ${{ env.DATADOG_API_HOST }}
       shell: bash
       run: |
         npx @datadog/datadog-ci sourcemaps upload ${{ inputs.path }} \
