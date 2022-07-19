@@ -45,6 +45,17 @@ runs:
         if [[ ${{ env.DATADOG_API_HOST == '' }} ]]; then
           echo "DATADOG_API_HOST=api.datadoghq.eu" >> $GITHUB_ENV
         fi
+    - uses: actions/download-artifact@v3
+      name: Download artifact
+      with:
+        name: playtomic-manager-react-app-staging-${{ inputs.version }}
+    - name: show files0
+      shell: bash
+      run: |
+        ls
+    - name: Unzip artifact
+      shell: bash
+      run: unzip playtomic-manager-react-app-staging-${{ inputs.version }}.zip
     - name: show files
       shell: bash
       run: |
