@@ -51,7 +51,7 @@ runs:
         DATADOG_API_HOST: ${{ env.DATADOG_API_HOST }}
       shell: bash
       run: |
-        npx @datadog/datadog-ci sourcemaps upload ${{ inputs.path }} \
+        npx @datadog/datadog-ci@1.7.2 sourcemaps upload ${{ inputs.path }} \
         --service=${{ inputs.service_name }} \
         --release-version=${{ inputs.version }} \
         --minified-path-prefix=${{ inputs.prefix }}
