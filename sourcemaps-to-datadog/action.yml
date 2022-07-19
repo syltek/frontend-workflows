@@ -39,10 +39,10 @@ runs:
     - name: Set environment variables
       shell: bash
       run: |
-        if [[ ${{ env.DATADOG_SITE }} == '' ]]; then
+        if [[ ${{ env.DATADOG_SITE == '' }} ]]; then
           echo "DATADOG_SITE=datadoghq.eu" >> $GITHUB_ENV
         fi
-        if [[ ${{ env.DATADOG_API_HOST }} == '' ]]; then
+        if [[ ${{ env.DATADOG_API_HOST == '' }} ]]; then
           echo "DATADOG_API_HOST=api.datadoghq.eu" >> $GITHUB_ENV
         fi
     - name: Upload sourcemaps
