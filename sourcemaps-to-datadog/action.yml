@@ -45,6 +45,18 @@ runs:
         if [[ ${{ env.DATADOG_API_HOST == '' }} ]]; then
           echo "DATADOG_API_HOST=api.datadoghq.eu" >> $GITHUB_ENV
         fi
+    - name: show files
+      shell: bash
+      run: |
+        ls
+    - name: show files 2
+      shell: bash
+      run: |
+        ls build
+    - name: show files 3
+      shell: bash
+      run: |
+        ls build/static/js
     - name: Upload sourcemaps
       env:
         DATADOG_SITE: ${{ env.DATADOG_SITE }}
